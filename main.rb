@@ -5,7 +5,6 @@ require './class/question'
 player1 = Player.new("Player 1")
 player2 = Player.new("Player 2")
 game = game.new(player1, player2)
-player_answer = gets.chomp
 
 while !game.round_complete?
   game.start_round
@@ -13,4 +12,4 @@ while !game.round_complete?
   game.round += 1
 end
 
-game.announce_winner
+puts game.announce_winner

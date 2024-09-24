@@ -1,13 +1,14 @@
 class Computer
-    attr_accessor :player1, :player2, :current_player, :round, :player_answer
+    attr_reader :player1, :player2, :current_player, :player_answer, :ask_question, :correct_answer, :increase_score
     
     def initialize(player1, player2)
       @player1 = player1
       @player2 = player2
       @current_player = player1
-      @round = 1
       @player_answer = nil
-      @question = question
+      @ask_question = ask_question
+      @correct_answer = correct_answer
+      @increase_score = increase_score
     end
 
     def switch_player
@@ -16,16 +17,18 @@ class Computer
 
     def start_round
       puts "Round #{@round}:"
-      question = Question.new
-      @player_answer = @question.ask_question(@current_player.name)
+      @ask_question = ask_question.new
+      @player_answer = player_answer
     end
   
-    if @player_answer == @question.correct_answer
+    def check_answer
+    if @player_answer == question.correct_answer
       puts "Correct 👍!"
       @current_player.increase_score
     else
-      puts "Wrong!😥 The correct answer was #{@question.correct_answer}."
+      puts "Wrong!😥 The correct answer was #{@correct_answer}."
     end
+  end
   
     def round_complete?
       @round == 3
@@ -38,8 +41,6 @@ class Computer
         puts "#{player2.name} wins with #{player2.score} points!"
       else
         puts "It's a tie!"
-      end
     end
+  end
 end
-
-export 
