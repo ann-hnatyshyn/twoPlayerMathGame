@@ -4,7 +4,7 @@ attr_accessor :name, :score, :player_answer
   def initialize (name, answer)
     @player = name
     @score = 0
-    @player_answer = answer
+    @player_answer = nil
   end
 
   def player_answer (answer)

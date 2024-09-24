@@ -1,12 +1,13 @@
 class Computer
-    attr_accessor :player1, :player2, :current_player, :round, player_answer:
+    attr_accessor :player1, :player2, :current_player, :round, :player_answer
     
     def initialize(player1, player2)
       @player1 = player1
       @player2 = player2
       @current_player = player1
       @round = 1
-      @player_answer = player_answer
+      @player_answer = nil
+      @question = question
     end
 
     def switch_player
@@ -16,14 +17,14 @@ class Computer
     def start_round
       puts "Round #{@round}:"
       question = Question.new
-      player_answer = question.ask_question(@current_player.name)
+      @player_answer = @question.ask_question(@current_player.name)
     end
   
-    if player_answer == question.correct_answer
+    if @player_answer == @question.correct_answer
       puts "Correct 👍!"
       @current_player.increase_score
     else
-      puts "Wrong!😥 The correct answer was #{question.correct_answer}."
+      puts "Wrong!😥 The correct answer was #{@question.correct_answer}."
     end
   
     def round_complete?
