@@ -1,10 +1,11 @@
-require './player'
-require './question'
-require './game'
+require './class/player'
+require './class/computer'
+require './class/question'
 
 player1 = Player.new("Player 1")
 player2 = Player.new("Player 2")
-game = Game.new(player1, player2)
+game = game.new(player1, player2)
+player_answer = gets.chomp
 
 while !game.round_complete?
   game.start_round
