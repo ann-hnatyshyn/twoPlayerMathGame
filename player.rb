@@ -6,7 +6,7 @@ attr_accessor :name, :score
     @score = 0
   end
 
-  def increaseScore
+  def increase_score
     @score += 1
   end
   
